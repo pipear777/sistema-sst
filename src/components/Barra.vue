@@ -37,8 +37,10 @@
       <template v-slot:extension>
         <v-tabs align-with-title>
           <v-tab @click="llamarEquipo()">Equipo de Trabajo</v-tab>
-          <v-tab @click="lamarCategorias()">Categorías</v-tab>
           <v-tab @click="llamarCarrusel()">Productos</v-tab>
+          <v-tab>
+            
+          </v-tab>
         </v-tabs>
       </template>
     </v-app-bar>
@@ -64,8 +66,8 @@ export default {
     llamarCarrusel(){
       this.$router.push('/articulos')
     },
-    lamarCategorias(){
-      this.$router.push('/categorias')
+    tablaCategorias(){
+      this.$router.push('/tabla')
     }
   }
 }

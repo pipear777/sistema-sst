@@ -1,10 +1,6 @@
 <template>
   <v-app>
-    <v-app-bar
-      app
-      color="blue-grey"
-      dark
-    >
+    <v-app-bar app color="blue-grey" dark>
       <div class="d-flex align-center">
         <v-img
           alt="Sistema SST"
@@ -19,52 +15,82 @@
 
       <v-spacer></v-spacer>
 
-      <v-btn
-        href=""
-        target="_blank"
-        text
-      @click="register()">
-       <span class="mr-2">Registro</span>
-        <v-icon>
-          mdi-account-multiple-plus
-          </v-icon>
+      <v-btn href="" target="_blank" text @click="register()">
+        <span class="mr-2">Registro</span>
+        <v-icon> mdi-account-multiple-plus </v-icon>
       </v-btn>
-      <v-btn 
-        href="/login"
-        target="_blank"
-        text
-      >
+      <v-btn href="" target="_blank" text @click="login()">
         &nbsp;&nbsp;&nbsp;&nbsp;
         <span class="mr-2">Iniciar sesión</span>
         <v-icon>mdi-login</v-icon>
       </v-btn>
-     
     </v-app-bar>
+
+    <!-- <v-col
+      cols="2"
+      class="flex-grow-0 flex-shrink-0"
+    >
+      <Sidebar />
+    </v-col>
+    <v-col
+        cols="1"
+        style="min-width: 100px; max-width: 100%;"
+        class="flex-grow-1 flex-shrink-0"
+      >
       <Barra />
+    </v-col> -->
+    <v-container >
+      <v-row
+        no-gutters
+        style="flex-wrap: nowrap;"
+      >
+        <v-col
+          cols="3"
+          class="flex-grow-0 flex-shrink-0"
+        >
+         <Sidebar />
+        </v-col>
+        <v-col
+          cols="9"
+          style="min-width: 100px; max-width: 100%;"
+          class="flex-grow-1 flex-shrink-0"
+        >
+         <Barra />
+        </v-col>
+      </v-row>
+    </v-container>
+  
+
+
+    
+   
+    
     <v-main>
-      <router-view/>
+      <router-view />
     </v-main>
   </v-app>
 </template>
 
 <script>
-import Barra from './components/Barra.vue'
+import Barra from "./components/Barra.vue";
+import Sidebar from "./components/Sidebar.vue";
 export default {
-  name: 'App',
+  name: "App",
   components: {
     Barra,
+    Sidebar,
   },
 
   data: () => ({
     //
   }),
   methods: {
-    llamarEquipo(){
-      this.$router.push('/login')
+    login() {
+      this.$router.push("/login");
     },
-    llamarCarrusel(){
-      this.$router.push('/register')
+    register() {
+      this.$router.push("/register");
     },
-  }
+  },
 };
 </script>
