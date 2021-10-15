@@ -2,16 +2,16 @@ import express from 'express';
 const router = express.Router();
 
 //importar el modelo nota
-import Categoria from '../models/categoria';
+import Producto from '../models/producto';
 
-//Agregar una registro
+//Agregar un registro
 
-router.post('/nueva-categoria', async(req,res)=>{
+router.post('/nuevo-producto', async(req,res)=>{
     const body= req.body;
 
     try {
-        const categoriaDB = await Categoria.create(body);
-        res.status(200).json(categoriaDB);
+        const productoDB = await Producto.create(body);
+        res.status(200).json(productoDB);
         
     } catch (error) {
         return res.status(500).json({
@@ -22,13 +22,13 @@ router.post('/nueva-categoria', async(req,res)=>{
     }
 });
 
-// Get busca todos los registros de categoría
+// Get busca todos los registros de productos
 
-router.get('/buscarCategorias',async(req,res)=>{
+router.get('/buscarProductos',async(req,res)=>{
 
     try {
-        const categoriaDB= await Categoria.find();
-        res.json(categoriaDB);
+        const productoDB= await Producto.find();
+        res.json(productoDB);
         
     } catch (error) {
         return res.status(400).json({
@@ -42,11 +42,11 @@ router.get('/buscarCategorias',async(req,res)=>{
 });
 
 //Get con parametro
-router.get('/buscarCategoria/:id',async(req,res)=>{
+router.get('/buscarProducto/:id',async(req,res)=>{
 const _id = req.params.id;
     try {
-        const categoriaDB = await Categoria.findOne({_id});
-        res.json(categoriaDB);
+        const productoDB = await Producto.findOne({_id});
+        res.json(productoDB);
 
 
         
@@ -61,22 +61,22 @@ const _id = req.params.id;
 
 })
 
-// Delete eliminar una categoría
+// Delete eliminar un producto
 
-router.delete('/eliminarCategoria/:id',async(req,res)=>{
+router.delete('/eliminarProducto/:id',async(req,res)=>{
     const _id = req.params.id;
 
     try {
 
-        const categoriaDB = await Categoria.findByIdAndDelete({_id});
-        if(!categoriaDB){
+        const productoDB = await Producto.findByIdAndDelete({_id});
+        if(!productoDB){
             return res.status(400).json({
                 mensaje: 'No se econtro la mascota',
                 error
             })
 
         }
-        res.json(categoriaDB);
+        res.json(productoDB);
         
     } catch (error) {
 
@@ -88,18 +88,18 @@ router.delete('/eliminarCategoria/:id',async(req,res)=>{
 
 });
 
-//Put actualizar categoría
+//Put actualizar producto
 
-router.put('/actualizarCategoria/:id' , async(req,res)=>{
+router.put('/actualizarProducto/:id' , async(req,res)=>{
     const _id = req.params.id;
     const body = req.body;
 
     try {
         
-        const categoriaDB = await Categoria.findByIdAndUpdate(
+        const productoDB = await Producto.findByIdAndUpdate(
         _id,
         body,{new: true} );
-        res.json(categoriaDB);
+        res.json(productoDB);
 
         
     } catch (error) {

@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 const Schema= mongoose.Schema;
 
 const categoriaSchema= new Schema({
-    nombre:{type: String, required:[true,'Nombre de mascota obligatorio']},
+    nombre:{type: String, required:[true,'Nombre de la categoría']},
     descripcion: String,
     usuarioId:String,
     date:{type: Date, default: Date.now},

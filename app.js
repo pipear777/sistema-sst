@@ -28,6 +28,11 @@ app.get('/', function(req,res){
 
 //middleware para vue.js
 app.use('/api',require('./routes/categoria'));
+app.use('/api',require('./routes/usuario'));
+app.use('/api',require('./routes/producto'));
+app.use('/api',require('./routes/dependencia'));
+app.use('/api',require('./routes/solicitud'));
+app.use('/api',require('./routes/empleado'));
 const history= require('connect-history-api-fallback');
 app.use(history());
 app.use(express.static(path.join(__dirname,'public')));

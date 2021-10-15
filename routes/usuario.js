@@ -2,16 +2,16 @@ import express from 'express';
 const router = express.Router();
 
 //importar el modelo nota
-import Categoria from '../models/categoria';
+import Usuario from '../models/usuario';
 
 //Agregar una registro
 
-router.post('/nueva-categoria', async(req,res)=>{
+router.post('/nuevo-usuario', async(req,res)=>{
     const body= req.body;
 
     try {
-        const categoriaDB = await Categoria.create(body);
-        res.status(200).json(categoriaDB);
+        const usuarioDB = await Usuario.create(body);
+        res.status(200).json(usuarioDB);
         
     } catch (error) {
         return res.status(500).json({
@@ -22,13 +22,13 @@ router.post('/nueva-categoria', async(req,res)=>{
     }
 });
 
-// Get busca todos los registros de categoría
+// Get busca todos los registros de usuario
 
-router.get('/buscarCategorias',async(req,res)=>{
+router.get('/buscarUsuarios',async(req,res)=>{
 
     try {
-        const categoriaDB= await Categoria.find();
-        res.json(categoriaDB);
+        const usuarioDB= await Usuario.find();
+        res.json(usuarioDB);
         
     } catch (error) {
         return res.status(400).json({
@@ -42,11 +42,11 @@ router.get('/buscarCategorias',async(req,res)=>{
 });
 
 //Get con parametro
-router.get('/buscarCategoria/:id',async(req,res)=>{
+router.get('/buscarUsuario/:id',async(req,res)=>{
 const _id = req.params.id;
     try {
-        const categoriaDB = await Categoria.findOne({_id});
-        res.json(categoriaDB);
+        const usuarioDB = await Usuario.findOne({_id});
+        res.json(usuarioDB);
 
 
         
@@ -61,17 +61,17 @@ const _id = req.params.id;
 
 })
 
-// Delete eliminar una categoría
+// Delete eliminar una mascota
 
-router.delete('/eliminarCategoria/:id',async(req,res)=>{
+router.delete('/eliminarUsuario/:id',async(req,res)=>{
     const _id = req.params.id;
 
     try {
 
-        const categoriaDB = await Categoria.findByIdAndDelete({_id});
-        if(!categoriaDB){
+        const usuarioDB = await Categoria.findByIdAndDelete({_id});
+        if(!usuarioDB){
             return res.status(400).json({
-                mensaje: 'No se econtro la mascota',
+                mensaje: 'No se econtro el usuario',
                 error
             })
 
@@ -88,18 +88,18 @@ router.delete('/eliminarCategoria/:id',async(req,res)=>{
 
 });
 
-//Put actualizar categoría
+//Put actualizar mascota
 
-router.put('/actualizarCategoria/:id' , async(req,res)=>{
+router.put('/actualizarUsuario/:id' , async(req,res)=>{
     const _id = req.params.id;
     const body = req.body;
 
     try {
         
-        const categoriaDB = await Categoria.findByIdAndUpdate(
+        const usuarioDB = await Usuario.findByIdAndUpdate(
         _id,
         body,{new: true} );
-        res.json(categoriaDB);
+        res.json(usuarioDB);
 
         
     } catch (error) {

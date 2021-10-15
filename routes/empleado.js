@@ -1,17 +1,17 @@
 import express from 'express';
 const router = express.Router();
 
-//importar el modelo nota
-import Categoria from '../models/categoria';
+//importar el modelo 
+import Empleado from '../models/empleado';
 
-//Agregar una registro
+//Agregar un registro
 
-router.post('/nueva-categoria', async(req,res)=>{
+router.post('/nuevo-empleado', async(req,res)=>{
     const body= req.body;
 
     try {
-        const categoriaDB = await Categoria.create(body);
-        res.status(200).json(categoriaDB);
+        const empleadoDB = await Empleado.create(body);
+        res.status(200).json(empleadoDB);
         
     } catch (error) {
         return res.status(500).json({
@@ -22,13 +22,13 @@ router.post('/nueva-categoria', async(req,res)=>{
     }
 });
 
-// Get busca todos los registros de categoría
+// Get busca todos los registros de empleados
 
-router.get('/buscarCategorias',async(req,res)=>{
+router.get('/buscarEmpleados',async(req,res)=>{
 
     try {
-        const categoriaDB= await Categoria.find();
-        res.json(categoriaDB);
+        const empleadoDB= await Empleado.find();
+        res.json(empleadoDB);
         
     } catch (error) {
         return res.status(400).json({
@@ -42,11 +42,11 @@ router.get('/buscarCategorias',async(req,res)=>{
 });
 
 //Get con parametro
-router.get('/buscarCategoria/:id',async(req,res)=>{
+router.get('/buscarEmpleado/:id',async(req,res)=>{
 const _id = req.params.id;
     try {
-        const categoriaDB = await Categoria.findOne({_id});
-        res.json(categoriaDB);
+        const empleadoDB = await Empleado.findOne({_id});
+        res.json(empleadoDB);
 
 
         
@@ -61,22 +61,22 @@ const _id = req.params.id;
 
 })
 
-// Delete eliminar una categoría
+// Delete eliminar un empleado
 
-router.delete('/eliminarCategoria/:id',async(req,res)=>{
+router.delete('/eliminarEmpleado/:id',async(req,res)=>{
     const _id = req.params.id;
 
     try {
 
-        const categoriaDB = await Categoria.findByIdAndDelete({_id});
-        if(!categoriaDB){
+        const empleadoDB = await Empleado.findByIdAndDelete({_id});
+        if(!empleadoDB){
             return res.status(400).json({
                 mensaje: 'No se econtro la mascota',
                 error
             })
 
         }
-        res.json(categoriaDB);
+        res.json(empleadoDB);
         
     } catch (error) {
 
@@ -88,18 +88,18 @@ router.delete('/eliminarCategoria/:id',async(req,res)=>{
 
 });
 
-//Put actualizar categoría
+//Put actualizar empleado
 
-router.put('/actualizarCategoria/:id' , async(req,res)=>{
+router.put('/actualizarEmpleado/:id' , async(req,res)=>{
     const _id = req.params.id;
     const body = req.body;
 
     try {
         
-        const categoriaDB = await Categoria.findByIdAndUpdate(
+        const empleadoDB = await Empleado.findByIdAndUpdate(
         _id,
         body,{new: true} );
-        res.json(categoriaDB);
+        res.json(empleadoDB);
 
         
     } catch (error) {
@@ -107,11 +107,8 @@ router.put('/actualizarCategoria/:id' , async(req,res)=>{
         return res.status(400).json({
             mensaje:'No se logró actualizar',
             error
-        })
-        
+        })     
     }
-
-
 });
 //Exportar la configuracion de express
 module.exports=router;

@@ -1,40 +1,35 @@
 {
-  "name": "sistema-sst",
-  "version": "0.1.0",
-  "private": true,
+  "name": "servidor",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "test:unit": "vue-cli-service test:unit",
-    "lint": "vue-cli-service lint"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon app.js",
+    "devbabel": "nodemon app.js --exec babel-node"
   },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "dependencies": {
-    "axios": "^0.22.0",
-    "body-parser": "^1.19.0",
-    "core-js": "^3.6.5",
+    "bcryptjs": "^2.4.3",
+    "connect-flash": "^0.1.1",
+    "connect-history-api-fallback": "^1.6.0",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
+    "express-handlebars": "^5.3.4",
+    "express-session": "^1.17.2",
+    "method-override": "^3.0.0",
+    "mongoose": "^6.0.9",
     "morgan": "^1.10.0",
-    "serve-favicon": "^2.5.0",
-    "vue": "^2.6.11",
-    "vue-axios": "^3.3.7",
-    "vue-router": "^3.2.0",
-    "vue-sweetalert2": "^5.0.2",
-    "vuetify": "^2.4.0"
+    "passport": "^0.5.0",
+    "passport-local": "^1.0.0"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "~4.5.0",
-    "@vue/cli-plugin-eslint": "~4.5.0",
-    "@vue/cli-plugin-router": "~4.5.0",
-    "@vue/cli-plugin-unit-jest": "~4.5.0",
-    "@vue/cli-service": "~4.5.0",
-    "@vue/test-utils": "^1.0.3",
-    "babel-eslint": "^10.1.0",
-    "eslint": "^6.7.2",
-    "eslint-plugin-vue": "^6.2.2",
-    "sass": "~1.32.0",
-    "sass-loader": "^10.0.0",
-    "vue-cli-plugin-vuetify": "~2.4.2",
-    "vue-template-compiler": "^2.6.11",
-    "vuetify-loader": "^1.7.0"
+    "@babel/cli": "^7.15.7",
+    "@babel/core": "^7.15.5",
+    "@babel/node": "^7.15.4",
+    "@babel/preset-env": "^7.15.6",
+    "nodemon": "^2.0.13"
   }
 }
